@@ -1,0 +1,62 @@
+---
+// Contacto: fila 50/50 a todo el ancho. Mitad arena con titular, `texto` y los datos de site.yaml → contacto en
+// serif grande (teléfono, WhatsApp, email, dirección con enlace al mapa, horario); mitad con `imagen` a sangre
+// tocando el borde derecho. Si la sección de primera cita (`cita`) no está activa, el formulario (mailto) va aquí,
+// bajo los datos. `boton`: texto del botón. Sin imagen, una sola columna ancha.
+import { seccion, seccionDeTipo, site, tel, whatsapp, mapa, cadena } from '../../data/site';
+import { altSeccion } from '../../lib/seo';
+import Imagen from '../ui/Imagen.astro';
+import FormularioContacto from '../ui/FormularioContacto.astro';
+interface Props { id: string }
+const s = seccion(Astro.props.id);
+const c = site.contacto;
+const foto = cadena(s?.imagen);
+const conFormulario = !seccionDeTipo('cita');
+const servicios = (seccionDeTipo('terapias')?.terapias ?? []).map((t) => cadena(t.titulo)).filter(Boolean);
+const boton = cadena(s?.boton) || undefined;
+const datos = [
+  c.telefono && { etiqueta: 'Teléfono', texto: c.telefono, url: tel(c.telefono) },
+  c.whatsapp && { etiqueta: 'WhatsApp', texto: c.whatsapp, url: whatsapp(c.whatsapp), fuera: true },
+  c.email && { etiqueta: 'Email', texto: c.email, url: `mailto:${c.email}` },
+  c.direccion && { etiqueta: 'Dirección', texto: c.direccion, url: mapa(c.direccion), fuera: true },
+  c.horario && { etiqueta: 'Horario', texto: c.horario, url: '' },
+].filter(Boolean) as { etiqueta: string; texto: string; url: string; fuera?: boolean }[];
+---
+
+{
+  s && (
+    <section id={Astro.props.id} class:list={['bg-fondo', foto && 'mitades']}>
+      <div class:list={[foto ? 'mitad mitad--izq' : 'contenedor seccion']}>
+        {s.antetitulo && <p class="antetitulo">{s.antetitulo}</p>}
+        {s.titulo && <h2 class="titulo-seccion">{s.titulo}</h2>}
+        {s.texto && <p class="titular-texto">{s.texto}</p>}
+        {datos.length > 0 && (
+          <dl class:list={['mt-12 grid gap-x-10 gap-y-8 sm:grid-cols-2', !foto && 'lg:grid-cols-3']}>
+            {datos.map((d) => (
+              <div class:list={['border-t border-[var(--linea)] pt-5', foto && !['Teléfono', 'WhatsApp'].includes(d.etiqueta) && 'sm:col-span-2']}>
+                <dt class="dato-etiqueta">{d.etiqueta}</dt>
+                <dd class="mt-2">
+                  {d.url ? (
+                    <a class:list={['dato-grande', d.etiqueta === 'Email' && 'break-all']} href={d.url} {...(d.fuera && { rel: 'noopener', target: '_blank' })}>{d.texto}</a>
+                  ) : (
+                    <span class="dato-grande block text-[clamp(1.25rem,2vw,1.6rem)]!">{d.texto}</span>
+                  )}
+                </dd>
+              </div>
+            ))}
+          </dl>
+        )}
+        {conFormulario && (
+          <div class="mt-14 max-w-[40rem]">
+            <FormularioContacto prefijo="contacto" servicios={servicios} boton={boton} />
+          </div>
+        )}
+      </div>
+      {foto && (
+        <div class="mitad-foto">
+          <Imagen src={foto} alt={altSeccion(s)} ancho={1200} alto={1500} />
+        </div>
+      )}
+    </section>
+  )
+}

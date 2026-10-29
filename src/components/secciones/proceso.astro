@@ -1,0 +1,46 @@
+---
+// Cómo trabajamos: banda salvia clara a todo el ancho. Titular centrado y `items: [{titulo, texto, icono}]` como
+// pasos sobre una línea de horizonte (horizontal en escritorio, vertical en móvil), cada uno con su icono en un sol.
+// Se adapta al número de pasos; sin pasos solo queda el titular (o nada si tampoco hay título).
+import { seccion, cadena, enlace } from '../../data/site';
+import Seccion from '../ui/Seccion.astro';
+import Icono from '../ui/Icono.astro';
+interface Props { id: string }
+const s = seccion(Astro.props.id);
+const pasos = (s?.items ?? []).filter((i) => cadena(i.titulo));
+const n = Math.min(Math.max(pasos.length, 1), 5);
+const cta = enlace(s?.cta);
+---
+
+{
+  s && (pasos.length > 0 || s.titulo) && (
+    <Seccion id={Astro.props.id} class="banda-clara">
+      <div class="mx-auto mb-14 max-w-[52rem] text-center md:mb-20">
+        {s.antetitulo && <p class="antetitulo">{s.antetitulo}</p>}
+        {s.titulo && <h2 class="titulo-seccion">{s.titulo}</h2>}
+        {s.texto && <p class="titular-texto mx-auto">{s.texto}</p>}
+      </div>
+      {pasos.length > 0 && (
+        <ol class="horizonte" style={`--n:${n}`}>
+          {pasos.map((p, i) => (
+            <li>
+              <span class="paso-sol" aria-hidden="true">
+                <Icono nombre={cadena(p.icono) || 'hoja'} tam={26} />
+              </span>
+              <div>
+                <p class="paso-num">Paso {i + 1}</p>
+                <h3 class="mt-2 text-[1.6rem] md:text-[1.85rem]">{p.titulo}</h3>
+                {cadena(p.texto) && <p class="suave mt-3">{p.texto}</p>}
+              </div>
+            </li>
+          ))}
+        </ol>
+      )}
+      {cta && (
+        <p class="mt-14 text-center">
+          <a class="btn" href={cta.url}>{cta.texto}</a>
+        </p>
+      )}
+    </Seccion>
+  )
+}

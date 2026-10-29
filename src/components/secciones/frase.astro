@@ -1,0 +1,32 @@
+---
+// Frase grande: banda a todo el ancho con foto a sangre (`imagen`, con velo salvia) o, sin foto, salvia honda plena.
+// `declaracion` en serif cursiva enorme con comilla en el color de acento y `autor` debajo. También admite
+// `antetitulo` y `cta`. Sin declaración (ni título) no se pinta.
+import { seccion, cadena, enlace } from '../../data/site';
+import Imagen from '../ui/Imagen.astro';
+interface Props { id: string }
+const s = seccion(Astro.props.id);
+const frase = cadena(s?.declaracion) || cadena(s?.titulo);
+const autor = cadena(s?.autor);
+const foto = cadena(s?.imagen);
+const cta = enlace(s?.cta);
+---
+
+{
+  s && frase && (
+    <section id={Astro.props.id} class:list={['frase', foto && 'frase--foto']}>
+      {foto && <Imagen src={foto} alt="" ancho={1920} alto={823} class="frase-foto" />}
+      <div class="contenedor py-24 md:py-40">
+        <figure class="mx-auto max-w-[62rem] text-center">
+          {s.antetitulo && <p class="antetitulo mb-8">{s.antetitulo}</p>}
+          <p class="frase-comilla" aria-hidden="true">“</p>
+          <blockquote>
+            <p>{frase}</p>
+          </blockquote>
+          {autor && <figcaption class="mt-10 text-[.8rem] font-semibold uppercase tracking-[.2em] opacity-85">{autor}</figcaption>}
+          {cta && <a class="btn btn-claro mt-10" href={cta.url}>{cta.texto}</a>}
+        </figure>
+      </div>
+    </section>
+  )
+}

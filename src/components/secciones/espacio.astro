@@ -1,0 +1,43 @@
+---
+// La consulta: banda carbón a todo el ancho con el titular en dos columnas y, debajo, `galeria` (lista de fotos)
+// en mosaico de borde a borde sin márgenes (la primera, grande). También admite `cta`. Sin fotos ni título no se pinta.
+import { seccion, enlace } from '../../data/site';
+import { altGaleria } from '../../lib/seo';
+import Imagen from '../ui/Imagen.astro';
+interface Props { id: string }
+const s = seccion(Astro.props.id);
+const fotos = (s?.galeria ?? []).filter(Boolean).slice(0, 24);
+const cta = enlace(s?.cta);
+const n = fotos.length;
+const variante = n === 1 ? 'mosaico--1' : n === 2 ? 'mosaico--2' : n === 3 ? 'mosaico--3' : n === 4 ? 'mosaico--4' : '';
+// En móvil la primera ocupa dos columnas; si sobra una al final, también.
+const anchaMovil = (i: number) => n > 2 && i === n - 1 && (n - 1) % 2 === 1;
+---
+
+{
+  s && (n > 0 || s.titulo) && (
+    <section id={Astro.props.id} class="banda-carbon">
+      <div class="contenedor seccion grid gap-8 lg:grid-cols-12 lg:items-end">
+        <div class="lg:col-span-7">
+          {s.antetitulo && <p class="antetitulo">{s.antetitulo}</p>}
+          {s.titulo && <h2 class="titulo-seccion">{s.titulo}</h2>}
+        </div>
+        {(s.texto || cta) && (
+          <div class="lg:col-span-4 lg:col-start-9">
+            {s.texto && <p class="suave text-lg">{s.texto}</p>}
+            {cta && <a class="btn btn-claro mt-6" href={cta.url}>{cta.texto}</a>}
+          </div>
+        )}
+      </div>
+      {n > 0 && (
+        <ul class:list={['mosaico', variante]}>
+          {fotos.map((g, i) => (
+            <li class:list={[anchaMovil(i) && 'ancha-movil']}>
+              <Imagen src={g} alt={altGaleria(i)} ancho={1200} alto={900} />
+            </li>
+          ))}
+        </ul>
+      )}
+    </section>
+  )
+}

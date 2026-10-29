@@ -1,0 +1,55 @@
+---
+// Apartado de texto genérico (site.yaml: `tipo: texto`): banda salvia clara a todo el ancho. Con `imagen`, fila
+// 50/50 con la foto a sangre a la derecha; sin ella, titular grande y texto en dos columnas. Admite `antetitulo`,
+// `titulo`, `texto` (párrafos), `declaracion` (frase en cursiva), `items` ({titulo, texto, icono}) y `cta`.
+import { seccion, parrafos, cadena, enlace } from '../../data/site';
+import { altSeccion } from '../../lib/seo';
+import Imagen from '../ui/Imagen.astro';
+import Icono from '../ui/Icono.astro';
+interface Props { id: string }
+const s = seccion(Astro.props.id);
+const declaracion = cadena(s?.declaracion);
+const foto = cadena(s?.imagen);
+const items = (s?.items ?? []).filter((i) => cadena(i.titulo));
+const cta = enlace(s?.cta);
+---
+
+{
+  s && (
+    <section id={Astro.props.id} class:list={['banda-clara', foto && 'mitades']}>
+      <div class:list={[foto ? 'mitad mitad--izq' : 'contenedor seccion grid gap-10 lg:grid-cols-12']}>
+        <div class:list={[!foto && 'lg:col-span-6']}>
+          {s.antetitulo && <p class="antetitulo">{s.antetitulo}</p>}
+          {s.titulo && <h2 class="titulo-seccion">{s.titulo}</h2>}
+          {declaracion && <p class="declaracion">{declaracion}</p>}
+        </div>
+        <div class:list={[!foto && 'lg:col-span-5 lg:col-start-8 lg:pt-10']}>
+          {s.texto && (
+            <div class="texto-lectura mt-8 max-w-[40rem]">
+              {parrafos(s.texto).map((p) => <p>{p}</p>)}
+            </div>
+          )}
+          {items.length > 0 && (
+            <ul class="credenciales mt-8 max-w-[40rem]">
+              {items.map((it) => (
+                <li>
+                  <Icono nombre={cadena(it.icono) || 'hoja'} class="mt-0.5 shrink-0 text-primario" tam={22} />
+                  <div>
+                    <p class="font-semibold">{it.titulo}</p>
+                    {cadena(it.texto) && <p class="suave text-[.95rem]">{it.texto}</p>}
+                  </div>
+                </li>
+              ))}
+            </ul>
+          )}
+          {cta && <a class="btn mt-9" href={cta.url}>{cta.texto}</a>}
+        </div>
+      </div>
+      {foto && (
+        <div class="mitad-foto">
+          <Imagen src={foto} alt={altSeccion(s)} ancho={1200} alto={1500} />
+        </div>
+      )}
+    </section>
+  )
+}

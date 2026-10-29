@@ -1,0 +1,20 @@
+---
+import Base from '../layouts/Base.astro';
+import { site, tel } from '../data/site';
+const c = site.contacto;
+---
+
+<Base titulo="Página no encontrada">
+  <section class="banda-salvia">
+    <div class="contenedor flex min-h-[70svh] flex-col justify-center py-24 md:py-32">
+      <p class="antetitulo">Error 404</p>
+      <h1 class="titulo-grande mt-5 max-w-[14ch]">Esta página no existe</h1>
+      <p class="mt-6 max-w-[34rem] text-lg opacity-90">Puede que el enlace esté mal o que la página se haya movido. Vuelve al inicio o escríbenos.</p>
+      <div class="mt-10 flex flex-wrap gap-3">
+        <a class="btn btn-claro" href="/">Volver al inicio</a>
+        {c.telefono && <a class="btn-sec" href={tel(c.telefono)}>{c.telefono}</a>}
+        {!c.telefono && c.email && <a class="btn-sec" href={`mailto:${c.email}`}>{c.email}</a>}
+      </div>
+    </div>
+  </section>
+</Base>

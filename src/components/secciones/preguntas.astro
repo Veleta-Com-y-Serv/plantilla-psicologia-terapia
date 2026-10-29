@@ -1,0 +1,35 @@
+---
+// Preguntas frecuentes: banda arena. A la izquierda titular grande y `texto` (fijo al hacer scroll en escritorio);
+// a la derecha `preguntas: [{pregunta, respuesta}]` en acordeón nativo (details/summary). Sin preguntas no se pinta.
+import { seccion, parrafos } from '../../data/site';
+import Seccion from '../ui/Seccion.astro';
+interface Props { id: string }
+const s = seccion(Astro.props.id);
+const lista = (s?.preguntas ?? []).filter((p) => p.pregunta);
+---
+
+{
+  s && lista.length > 0 && (
+    <Seccion id={Astro.props.id} class="bg-fondo">
+      <div class="grid gap-12 lg:grid-cols-12">
+        <div class="lg:col-span-4">
+          <div class="lg:sticky lg:top-32">
+            {s.antetitulo && <p class="antetitulo">{s.antetitulo}</p>}
+            {s.titulo && <h2 class="titulo-seccion">{s.titulo}</h2>}
+            {s.texto && <p class="titular-texto">{s.texto}</p>}
+          </div>
+        </div>
+        <div class="preguntas lg:col-span-8">
+          {lista.map((p) => (
+            <details>
+              <summary>{p.pregunta}</summary>
+              <div class="space-y-3">
+                {parrafos(p.respuesta).map((t) => <p>{t}</p>)}
+              </div>
+            </details>
+          ))}
+        </div>
+      </div>
+    </Seccion>
+  )
+}

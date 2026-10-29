@@ -1,0 +1,52 @@
+---
+// Portada a pantalla completa (92svh) con foto a sangre (`imagen`) y velo salvia; sin foto, salvia honda plena.
+// Antetítulo con horizonte, titular enorme en serif, `texto`, `cta` y `cta_secundario`. Abajo, franja de accesos a
+// todo el ancho con `items: [{titulo, texto, icono}]` (presencial, online, primera llamada…). Lo vacío no se pinta.
+import { seccion, enlace, cadena, externo } from '../../data/site';
+import { altHero } from '../../lib/seo';
+import Imagen from '../ui/Imagen.astro';
+import Icono from '../ui/Icono.astro';
+interface Props { id: string; primera?: boolean }
+const { id, primera = false } = Astro.props;
+const s = seccion(id);
+const cta = enlace(s?.cta);
+const cta2 = enlace(s?.cta_secundario);
+const accesos = (s?.items ?? []).filter((i) => cadena(i.titulo));
+const foto = cadena(s?.imagen);
+---
+
+{
+  s && (
+    <section id={id} class:list={['hero-sangre', !foto && 'hero-sangre--sin-foto']}>
+      {foto && <Imagen src={foto} alt={altHero()} ancho={1920} alto={1080} prioridad={primera} class="hero-foto" />}
+      <div class="hero-cuerpo">
+        <div class="contenedor">
+          {s.antetitulo && <p class="antetitulo">{s.antetitulo}</p>}
+          {s.titulo && <h1 class="hero-titulo">{s.titulo}</h1>}
+          {s.texto && <p class="hero-texto">{s.texto}</p>}
+          {(cta || cta2) && (
+            <div class="mt-10 flex flex-wrap gap-3 sm:gap-4">
+              {cta && <a class="btn btn-claro" href={cta.url} {...(externo(cta.url) && { rel: 'noopener', target: '_blank' })}>{cta.texto}</a>}
+              {cta2 && <a class="btn-sec" href={cta2.url} {...(externo(cta2.url) && { rel: 'noopener', target: '_blank' })}>{cta2.texto}</a>}
+            </div>
+          )}
+        </div>
+      </div>
+      {accesos.length > 0 && (
+        <div class="hero-accesos">
+          <ul class="contenedor" style={`--n:${Math.min(accesos.length, 4)}`}>
+            {accesos.map((a) => (
+              <li>
+                <Icono nombre={cadena(a.icono) || 'hoja'} class="mt-1 shrink-0 text-acento" tam={24} />
+                <div>
+                  <p class="font-display text-[1.2rem] leading-snug">{a.titulo}</p>
+                  {cadena(a.texto) && <p class="text-[.92rem] opacity-80">{a.texto}</p>}
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+    </section>
+  )
+}

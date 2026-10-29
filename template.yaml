@@ -1,0 +1,91 @@
+# Metadatos de la plantilla para el catálogo de NoExpertise.
+id: psicologia-terapia
+nombre: Psicología y terapia
+descripcion: Web serena para psicólogos, terapeutas y logopedas, con terapias, cómo trabajas, equipo y primera cita.
+sectores:
+  - { id: psicologia, nombre: Psicología }
+  - { id: terapia, nombre: Terapia }
+  - { id: logopedia, nombre: Logopedia }
+  - { id: coaching, nombre: Coaching }
+  - { id: mindfulness, nombre: Mindfulness }
+secciones:
+  - { id: hero, nombre: Portada }
+  - { id: motivos, nombre: Motivos de consulta }
+  - { id: terapias, nombre: Terapias }
+  - { id: frase, nombre: Frase }
+  - { id: proceso, nombre: Cómo trabajamos }
+  - { id: sobre, nombre: Quiénes somos }
+  - { id: espacio, nombre: La consulta }
+  - { id: preguntas, nombre: Preguntas frecuentes }
+  - { id: cita, nombre: Primera cita }
+  - { id: contacto, nombre: Contacto }
+estilo: sereno
+plan_minimo: gratis
+version: 1.0.0
+base: astrowind
+demo_url: https://demo-plantilla-psicologia-terapia.noexpertise.com
+activa: true
+orden: 290
+
+# Asistente de puesta en marcha (NoExpertise): un paso por pantalla. Rutas del site sin índices;
+# tipos: texto y lista (la IA propone), datos, fotos, eleccion (colores y logo) y repaso.
+asistente:
+  - id: negocio
+    titulo: "Tu consulta"
+    pregunta: "¿Cómo se llama tu consulta, qué tipo de terapia ofreces y con qué te suele venir la gente?"
+    ayuda: "Para quién trabajas, dónde atiendes, si haces sesiones online y los motivos de consulta más habituales (ansiedad, duelo, pareja…)."
+    tipo: texto
+    campos: [nombre, eslogan, seo.titulo, seo.descripcion, secciones.hero.antetitulo, secciones.hero.titulo, secciones.hero.texto, secciones.hero.items, secciones.motivos.titulo, secciones.motivos.texto, secciones.motivos.items]
+  - id: contacto
+    titulo: "Cómo te encuentran"
+    pregunta: "¿Dónde está la consulta y cómo te pueden llamar o escribir?"
+    ayuda: "Solo lo que quieras que vean tus pacientes. Lo que dejes vacío no sale en tu web."
+    tipo: datos
+    campos: [contacto.telefono, contacto.whatsapp, contacto.email, contacto.direccion, contacto.horario, secciones.cita.enlace_agenda, redes.instagram, redes.linkedin]
+  - id: terapias
+    titulo: "Tus terapias"
+    pregunta: "¿Qué terapias o servicios ofreces? Uno por línea, con la duración, si es presencial u online y el precio si quieres."
+    ayuda: "Si lo prefieres, añádelas luego en Contenido."
+    tipo: lista
+    campos: [secciones.terapias.terapias]
+  - id: proceso
+    titulo: "Cómo trabajas"
+    pregunta: "¿Cómo es empezar contigo, desde la primera llamada hasta el seguimiento?"
+    tipo: texto
+    campos: [secciones.proceso.titulo, secciones.proceso.texto, secciones.proceso.items]
+  - id: sobre
+    titulo: "Quiénes sois"
+    pregunta: "Cuéntame tu historia: formación, enfoque y cómo es la consulta."
+    tipo: texto
+    campos: [secciones.sobre.titulo, secciones.sobre.declaracion, secciones.sobre.texto, secciones.sobre.items, secciones.frase.declaracion]
+  - id: equipo
+    titulo: "Quién atiende"
+    pregunta: "¿Quién atiende en la consulta? Nombre y especialidad de cada persona, una por línea."
+    ayuda: "Las fotos las pones luego en Contenido."
+    tipo: lista
+    campos: [secciones.sobre.personas]
+  - id: preguntas
+    titulo: "Preguntas frecuentes"
+    pregunta: "¿Qué te preguntan más a menudo antes de empezar? Escribe cada pregunta y lo que respondes."
+    ayuda: "Si lo prefieres, añádelas luego en Contenido."
+    tipo: lista
+    campos: [secciones.preguntas.preguntas]
+  - id: cita
+    titulo: "Primera cita"
+    pregunta: "¿Cómo se pide la primera cita contigo?"
+    tipo: texto
+    campos: [secciones.cita.titulo, secciones.cita.texto, secciones.cita.items, secciones.cita.nota]
+  - id: fotos
+    titulo: "Tus fotos"
+    pregunta: "Pon una foto de portada, una de la consulta y, si quieres, alguna más del espacio."
+    ayuda: "Sube las tuyas o elige una del banco. Las que no cambies se quedan como están."
+    tipo: fotos
+    campos: [secciones.hero.imagen, secciones.terapias.imagen, secciones.frase.imagen, secciones.sobre.imagen, secciones.espacio.galeria, secciones.contacto.imagen]
+  - id: aspecto
+    titulo: "Colores y logo"
+    pregunta: "Elige los colores de tu web y, si tienes, tu logo."
+    tipo: eleccion
+    campos: [colores.primario, colores.acento, logo]
+  - id: repaso
+    titulo: "Repaso"
+    tipo: repaso

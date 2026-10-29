@@ -1,0 +1,168 @@
+# Contenido de la web. Es lo único que rellena la plataforma NoExpertise.
+# Las secciones se muestran en el orden de este fichero. Para ocultar una: activa: false.
+# Apartado nuevo: un id propio (es su ancla, /#id) con `tipo:` = el diseño de otra sección o `texto`.
+# Listas planas: nunca una lista dentro de un elemento de lista. Precios siempre entre comillas.
+nombre: Lur Psicología
+eslogan: Psicología y terapia en San Sebastián y online.
+sector: psicologia
+logo: ""          # ruta a una imagen en public/ (p. ej. /logo.svg). Vacío = nombre en texto.
+colores:
+  primario: "#4d6a56"
+  acento: "#cfae7d"
+  fondo: "#f2ede4"
+  texto: "#23282a"
+contacto:
+  telefono: "943 58 21 64"
+  email: hola@lurpsicologia.es
+  direccion: "Calle Prim 27, 2.º izquierda, 20006 San Sebastián (Gipuzkoa)"
+  horario: "Lunes a jueves, de 9:00 a 20:30. Viernes, de 9:00 a 15:00."
+  whatsapp: "644 27 19 03"
+redes:
+  instagram: https://www.instagram.com/
+  facebook: ""
+  linkedin: https://www.linkedin.com/
+menu:
+  - { texto: Terapias, url: "/#terapias" }
+  - { texto: Cómo trabajamos, url: "/#proceso" }
+  - { texto: Equipo, url: "/#sobre" }
+  - { texto: La consulta, url: "/#espacio" }
+  - { texto: Preguntas, url: "/#preguntas" }
+  - { texto: Contacto, url: "/#contacto" }
+boton_cabecera: { texto: Primera cita, url: "/#cita" }
+seo:
+  titulo: Lur Psicología · Psicología y terapia en San Sebastián
+  descripcion: "Centro de psicología en San Sebastián: terapia para adultos, adolescentes y parejas, duelo, logopedia y mindfulness. Presencial y online."
+  tipo: MedicalBusiness
+marca_pie: true
+
+secciones:
+  hero:
+    activa: true
+    antetitulo: Centro de psicología · San Sebastián y online
+    titulo: Un lugar tranquilo para entender lo que te pasa.
+    texto: "Terapia para adultos, adolescentes y parejas en el centro de Donostia o por videollamada. Sin prisas, en castellano o en euskera."
+    imagen: /fotos/hero.jpg
+    cta: { texto: Pedir primera cita, url: "/#cita" }
+    cta_secundario: { texto: Ver las terapias, url: "/#terapias" }
+    items:
+      - { titulo: En el centro de Donostia, texto: "A cinco minutos de la playa de la Zurriola.", icono: casa }
+      - { titulo: También online, texto: "Por videollamada, con el mismo cuidado.", icono: portatil }
+      - { titulo: Primera llamada sin coste, texto: "Veinte minutos para resolver dudas.", icono: telefono }
+
+  motivos:
+    activa: true
+    antetitulo: Motivos de consulta
+    titulo: Lo que nos traéis a consulta
+    texto: "Si no ves aquí lo tuyo, pregúntanos igualmente. Te decimos con sinceridad si podemos ayudarte o a quién acudir."
+    items:
+      - { titulo: Ansiedad }
+      - { titulo: Duelo }
+      - { titulo: Autoestima }
+      - { titulo: Estrés en el trabajo }
+      - { titulo: Crisis de pareja }
+      - { titulo: Adolescencia }
+      - { titulo: Bloqueos y decisiones }
+      - { titulo: Insomnio }
+      - { titulo: Dificultades del habla }
+      - { titulo: Cambios de etapa }
+
+  terapias:
+    activa: true
+    antetitulo: Terapias
+    titulo: Cada proceso, a su ritmo
+    texto: "Sesiones con cita previa, presenciales en la consulta o por videollamada. Te damos factura de cada sesión."
+    imagen: /fotos/sesion-online.jpg
+    terapias:
+      - { titulo: Terapia individual para adultos, texto: "Ansiedad, estrés, autoestima, bloqueos y momentos de cambio. Un espacio para ti.", modalidad: Ambas, duracion: "50 min", precio: "65 €" }
+      - { titulo: Terapia para adolescentes, texto: "De 12 a 17 años, con una sesión de orientación para la familia cada mes.", modalidad: Presencial, duracion: "50 min", precio: "60 €" }
+      - { titulo: Terapia de pareja, texto: "Para recuperar la comunicación, decidir juntos o separarse con el menor daño posible.", modalidad: Ambas, duracion: "75 min", precio: "85 €" }
+      - { titulo: Acompañamiento en el duelo, texto: "Para atravesar una pérdida con apoyo, sin plazos y a tu manera.", modalidad: Ambas, duracion: "50 min", precio: "65 €" }
+      - { titulo: Logopedia infantil, texto: "Retrasos del lenguaje, dificultades de pronunciación y lectoescritura.", modalidad: Presencial, duracion: "45 min", precio: "45 €" }
+      - { titulo: Grupo de mindfulness, texto: "Ocho sesiones semanales en grupos de diez personas como máximo.", modalidad: Online, duracion: "8 sesiones de 90 min", precio: "180 €" }
+    cta: { texto: Pedir primera cita, url: "/#cita" }
+
+  frase:
+    activa: true
+    declaracion: "No hace falta estar muy mal para pedir ayuda. Basta con querer estar mejor."
+    autor: Maite Arregi, psicóloga sanitaria
+    imagen: /fotos/hayedo.jpg
+
+  proceso:
+    activa: true
+    antetitulo: Cómo trabajamos
+    titulo: Cuatro pasos, sin letra pequeña
+    texto: "Desde la primera llamada sabes qué vamos a hacer, cuánto puede durar y cuánto cuesta."
+    items:
+      - { titulo: Primera llamada, texto: "Veinte minutos para conocernos y ver si somos el sitio adecuado. Sin compromiso.", icono: telefono }
+      - { titulo: Evaluación, texto: "En las dos primeras sesiones entendemos qué te pasa y qué quieres cambiar.", icono: mensaje }
+      - { titulo: Plan de trabajo, texto: "Acordamos objetivos, frecuencia y una duración orientativa.", icono: calendario }
+      - { titulo: Seguimiento, texto: "Revisamos juntos cómo vas y espaciamos las sesiones cuando toca.", icono: hoja }
+
+  sobre:
+    activa: true
+    antetitulo: Quiénes somos
+    titulo: Tres profesionales, una misma forma de escuchar
+    declaracion: "Escuchamos primero y proponemos después."
+    texto: |
+      Abrimos Lur en 2019 en un piso luminoso del Centro, con la idea de que ir a terapia se parezca más a una buena conversación que a una cita médica.
+
+      Trabajamos con terapia cognitivo-conductual y con herramientas de tercera generación, como la aceptación y el compromiso o la atención plena. Nos adaptamos a cada persona: hay quien necesita pautas concretas y quien necesita, sobre todo, tiempo para ordenar lo que siente.
+
+      Atendemos en castellano y en euskera, en la consulta o por videollamada.
+    imagen: /fotos/consulta.jpg
+    items:
+      - { titulo: Psicólogas y psicólogos sanitarios, texto: "Colegiados y con formación continua supervisada.", icono: insignia }
+      - { titulo: Castellano y euskera, texto: "Sesiones en los dos idiomas.", icono: idiomas }
+      - { titulo: Centro sanitario autorizado, texto: "Consulta inscrita en el registro de centros sanitarios.", icono: escudo }
+    subtitulo: Quién te atiende
+    personas:
+      - { nombre: Maite Arregi, cargo: "Psicóloga sanitaria · Adultos y duelo", foto: /placeholders/persona.svg, texto: "Quince años de consulta. Especializada en ansiedad, duelo y trauma." }
+      - { nombre: Iker Zubizarreta, cargo: "Psicólogo sanitario · Pareja y adolescentes", foto: /placeholders/persona.svg, texto: "Terapia sistémica y de pareja. Coordina el grupo de mindfulness." }
+      - { nombre: Ane Olaizola, cargo: "Logopeda · Infancia", foto: /placeholders/persona.svg, texto: "Lenguaje, habla y lectoescritura, siempre de la mano de la familia." }
+
+  espacio:
+    activa: true
+    antetitulo: La consulta
+    titulo: Un sitio tranquilo para hablar
+    texto: "Dos salas con luz natural, una sala para los grupos y una sala de espera discreta, en un segundo piso con ascensor."
+    galeria:
+      - /fotos/sala-terapia.jpg
+      - /fotos/detalle-mesa.jpg
+      - /fotos/sala-grupo.jpg
+      - /fotos/ventana.jpg
+
+  preguntas:
+    activa: true
+    antetitulo: Preguntas frecuentes
+    titulo: Antes de empezar
+    texto: "Si te queda alguna duda, llámanos o escríbenos por WhatsApp."
+    preguntas:
+      - { pregunta: "¿Cuántas sesiones voy a necesitar?", respuesta: "Depende de cada caso. En la evaluación te damos una estimación y la revisamos juntos cada pocas semanas." }
+      - { pregunta: "¿La terapia online funciona igual que la presencial?", respuesta: "Para la mayoría de los casos, sí. Solo necesitas un lugar tranquilo y una conexión estable." }
+      - { pregunta: "¿Necesito un volante del médico?", respuesta: "No. Puedes pedir cita directamente. Si tienes un informe previo, tráelo y lo tenemos en cuenta." }
+      - { pregunta: "¿Cómo se pagan las sesiones?", respuesta: "Por transferencia, Bizum o tarjeta al final de cada sesión. Te damos factura." }
+      - { pregunta: "¿Y si tengo que cancelar una cita?", respuesta: "Avísanos con 24 horas de antelación y la cambiamos sin coste." }
+      - { pregunta: "¿Lo que cuento es confidencial?", respuesta: "Siempre. El secreto profesional lo marcan el código deontológico y la ley." }
+
+  cita:
+    activa: true
+    antetitulo: Primera cita
+    titulo: Da el primer paso
+    texto: "Cuéntanos en dos líneas qué te trae y cuándo te viene bien. Te llamamos en menos de 24 horas laborables."
+    items:
+      - { titulo: Nos escribes, texto: "Por el formulario, por WhatsApp o por teléfono." }
+      - { titulo: Te llamamos, texto: "Una llamada breve y sin coste para resolver dudas." }
+      - { titulo: Primera sesión, texto: "En la consulta o por videollamada, esa misma semana si puede ser." }
+    cta: { texto: Escribir por WhatsApp, url: "https://wa.me/34644271903" }
+    enlace_agenda: "https://www.lurpsicologia.es/agenda"
+    texto_agenda: Reservar en la agenda online
+    nota: "Si no puedes venir, avísanos con 24 horas y cambiamos la cita sin coste."
+    boton: Enviar solicitud
+
+  contacto:
+    activa: true
+    antetitulo: Contacto
+    titulo: Dónde estamos
+    texto: "En la calle Prim, en pleno Centro de Donostia. Segundo piso con ascensor y timbre discreto."
+    imagen: /fotos/portal.jpg
+    boton: Enviar mensaje

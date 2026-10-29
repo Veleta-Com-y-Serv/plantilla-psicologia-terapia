@@ -1,0 +1,30 @@
+---
+// Motivos de consulta: banda salvia plena a todo el ancho. A la izquierda antetítulo, título y `texto`;
+// a la derecha `items: [{titulo}]` como palabras grandes en serif separadas por un sol pequeño (una de cada dos
+// en cursiva). Sin motivos ni título no se pinta.
+import { seccion, cadena, enlace } from '../../data/site';
+import Seccion from '../ui/Seccion.astro';
+import Titular from '../ui/Titular.astro';
+interface Props { id: string }
+const s = seccion(Astro.props.id);
+const motivos = (s?.items ?? []).map((i) => cadena(i.titulo)).filter(Boolean);
+const cta = enlace(s?.cta);
+---
+
+{
+  s && (motivos.length > 0 || s.titulo) && (
+    <Seccion id={Astro.props.id} class="banda-salvia">
+      <div class="grid gap-10 lg:grid-cols-12 lg:gap-12">
+        <div class="lg:col-span-4">
+          <Titular antetitulo={s.antetitulo} titulo={s.titulo} texto={s.texto} class="mb-0!" />
+          {cta && <a class="btn btn-claro mt-9" href={cta.url}>{cta.texto}</a>}
+        </div>
+        {motivos.length > 0 && (
+          <ul class="motivos-lista lg:col-span-8 lg:pt-10" aria-label={s.titulo || undefined}>
+            {motivos.map((m) => <li>{m}</li>)}
+          </ul>
+        )}
+      </div>
+    </Seccion>
+  )
+}

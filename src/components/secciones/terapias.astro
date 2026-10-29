@@ -1,0 +1,70 @@
+---
+// Terapias: banda arena con el titular en dos columnas (título grande a la izquierda; `texto` y `cta` a la derecha),
+// rejilla de tarjetas en arco (1 / 2 / 3 columnas) y, si hay `imagen`, una franja de foto a sangre de borde a borde.
+// `terapias: [{titulo, texto, modalidad, duracion, precio}]`: modalidad, duración y precio son opcionales
+// (vacíos no se pintan; «Ambas» se muestra como «Presencial y online»).
+import { seccion, cadena, enlace } from '../../data/site';
+import { altSeccion } from '../../lib/seo';
+import Imagen from '../ui/Imagen.astro';
+import Icono from '../ui/Icono.astro';
+interface Props { id: string }
+const s = seccion(Astro.props.id);
+const lista = (s?.terapias ?? []).filter((t) => cadena(t.titulo));
+const cta = enlace(s?.cta);
+const modalidad = (m: string) => (/^ambas$/i.test(m) ? 'Presencial y online' : m);
+const icono = (m: string) => (/online/i.test(m) && !/presencial|ambas/i.test(m) ? 'portatil' : /ambas/i.test(m) ? 'hoja' : 'casa');
+---
+
+{
+  s && (lista.length > 0 || s.titulo) && (
+    <section id={Astro.props.id} class="bg-fondo">
+      <div class="contenedor seccion">
+        <div class="grid gap-8 lg:grid-cols-12 lg:items-end">
+          <div class="lg:col-span-7">
+            {s.antetitulo && <p class="antetitulo">{s.antetitulo}</p>}
+            {s.titulo && <h2 class="titulo-grande mt-4">{s.titulo}</h2>}
+          </div>
+          {(s.texto || cta) && (
+            <div class="lg:col-span-4 lg:col-start-9">
+              {s.texto && <p class="suave text-lg">{s.texto}</p>}
+              {cta && <a class="btn mt-6" href={cta.url}>{cta.texto}</a>}
+            </div>
+          )}
+        </div>
+        {lista.length > 0 && (
+          <ul class="arcos mt-14 md:mt-20">
+            {lista.map((t) => {
+              const m = cadena(t.modalidad);
+              const duracion = cadena(t.duracion);
+              const precio = cadena(t.precio);
+              return (
+                <li class="arco">
+                  {m && (
+                    <p class="arco-modalidad">
+                      <Icono nombre={icono(m)} tam={16} />
+                      {modalidad(m)}
+                    </p>
+                  )}
+                  <h3>{t.titulo}</h3>
+                  {cadena(t.texto) && <p class="arco-texto">{t.texto}</p>}
+                  {(duracion || precio) ? (
+                    <p class="arco-pie">
+                      {duracion ? (
+                        <span class="suave inline-flex items-center gap-1.5 text-sm">
+                          <Icono nombre="reloj" tam={16} />
+                          {duracion}
+                        </span>
+                      ) : <span />}
+                      {precio && <span class="arco-precio">{precio}</span>}
+                    </p>
+                  ) : <span class="arco-espacio" aria-hidden="true" />}
+                </li>
+              );
+            })}
+          </ul>
+        )}
+      </div>
+      {s.imagen && <Imagen src={s.imagen} alt={altSeccion(s)} ancho={1920} alto={732} class="franja-foto" />}
+    </section>
+  )
+}

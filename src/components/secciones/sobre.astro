@@ -1,0 +1,73 @@
+---
+// Quiénes somos: fila 50/50 a sangre. La foto (`imagen`) toca el borde izquierdo de la ventana y ocupa toda la
+// altura; al otro lado, titular, `declaracion` en cursiva con filete de acento, `texto` en párrafos e `items`
+// (credenciales con icono). Debajo, `subtitulo` y `personas: [{nombre, cargo, foto, texto}]` con retratos en arco.
+// Sin imagen, el texto va en una sola columna ancha. Todo lo vacío se omite.
+import { seccion, parrafos, cadena, enlace } from '../../data/site';
+import { altSeccion } from '../../lib/seo';
+import Imagen from '../ui/Imagen.astro';
+import Icono from '../ui/Icono.astro';
+interface Props { id: string }
+const s = seccion(Astro.props.id);
+const declaracion = cadena(s?.declaracion);
+const subtitulo = cadena(s?.subtitulo);
+const foto = cadena(s?.imagen);
+const personas = (s?.personas ?? []).filter((p) => cadena(p.nombre));
+const credenciales = (s?.items ?? []).filter((i) => cadena(i.titulo));
+const cta = enlace(s?.cta);
+---
+
+{
+  s && (
+    <section id={Astro.props.id} class="bg-fondo">
+      <div class:list={[foto ? 'mitades' : 'contenedor']}>
+        {foto && (
+          <div class="mitad-foto">
+            <Imagen src={foto} alt={altSeccion(s)} ancho={1200} alto={1500} />
+          </div>
+        )}
+        <div class:list={[foto ? 'mitad mitad--der' : 'seccion']}>
+          {s.antetitulo && <p class="antetitulo">{s.antetitulo}</p>}
+          {s.titulo && <h2 class="titulo-seccion">{s.titulo}</h2>}
+          {declaracion && <p class="declaracion">{declaracion}</p>}
+          {s.texto && (
+            <div class="texto-lectura mt-8 max-w-[40rem] text-[1.08rem]">
+              {parrafos(s.texto).map((p) => <p>{p}</p>)}
+            </div>
+          )}
+          {credenciales.length > 0 && (
+            <ul class="credenciales mt-10 max-w-[40rem]">
+              {credenciales.map((it) => (
+                <li>
+                  <span class="grid size-11 shrink-0 place-items-center rounded-full bg-primario/12 text-primario">
+                    <Icono nombre={cadena(it.icono) || 'check'} tam={20} />
+                  </span>
+                  <div>
+                    <p class="font-semibold leading-snug">{it.titulo}</p>
+                    {cadena(it.texto) && <p class="suave text-[.95rem]">{it.texto}</p>}
+                  </div>
+                </li>
+              ))}
+            </ul>
+          )}
+          {cta && <a class="btn mt-10" href={cta.url}>{cta.texto}</a>}
+        </div>
+      </div>
+      {personas.length > 0 && (
+        <div class="contenedor seccion grid gap-12 border-t border-[var(--linea)] lg:grid-cols-12">
+          {subtitulo && <h3 class="text-[clamp(2rem,4vw,3.5rem)] lg:col-span-3">{subtitulo}</h3>}
+          <ul class:list={['retratos', subtitulo ? 'lg:col-span-9' : 'lg:col-span-12']} style={`--n:${Math.min(personas.length, 4)}`}>
+            {personas.map((p) => (
+              <li>
+                <Imagen src={cadena(p.foto) || '/placeholders/persona.svg'} alt={p.nombre} ancho={600} alto={800} class="retrato-arco" />
+                <p class="font-display text-[1.65rem] leading-tight">{p.nombre}</p>
+                {cadena(p.cargo) && <p class="mt-1 text-[.78rem] font-semibold uppercase tracking-[.16em] text-primario">{p.cargo}</p>}
+                {cadena(p.texto) && <p class="suave mt-3">{p.texto}</p>}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+    </section>
+  )
+}
