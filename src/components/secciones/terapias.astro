@@ -3,8 +3,10 @@
 // rejilla de tarjetas en arco (1 / 2 / 3 columnas) y, si hay `imagen`, una franja de foto a sangre de borde a borde.
 // `terapias: [{titulo, texto, modalidad, duracion, precio}]`: modalidad, duración y precio son opcionales
 // (vacíos no se pintan; «Ambas» se muestra como «Presencial y online»).
+// Las terapias con `detalle` tienen página propia (/terapias/<slug>/): el título es el enlace y la tarjeta entera se pulsa.
 import { seccion, cadena, enlace } from '../../data/site';
 import { altSeccion } from '../../lib/seo';
+import { enlaceDe } from '../../lib/paginas';
 import Imagen from '../ui/Imagen.astro';
 import Icono from '../ui/Icono.astro';
 interface Props { id: string }
@@ -45,7 +47,7 @@ const icono = (m: string) => (/online/i.test(m) && !/presencial|ambas/i.test(m) 
                       {modalidad(m)}
                     </p>
                   )}
-                  <h3>{t.titulo}</h3>
+                  <h3>{enlaceDe(t) ? <a href={enlaceDe(t)} class="arco-enlace">{t.titulo}</a> : t.titulo}</h3>
                   {cadena(t.texto) && <p class="arco-texto">{t.texto}</p>}
                   {(duracion || precio) ? (
                     <p class="arco-pie">
@@ -58,6 +60,7 @@ const icono = (m: string) => (/online/i.test(m) && !/presencial|ambas/i.test(m) 
                       {precio && <span class="arco-precio">{precio}</span>}
                     </p>
                   ) : <span class="arco-espacio" aria-hidden="true" />}
+                  {enlaceDe(t) && <span class="arco-ver" aria-hidden="true">Ver más <Icono nombre="flecha" tam={16} /></span>}
                 </li>
               );
             })}

@@ -55,3 +55,8 @@ con cojines, ventana a los tejados y el mar, portal del ensanche (contacto). Sin
 - Nada de caja centrada estrecha con tarjetas blancas ni del hero 5/7 con retrato de `profesional-autonomo`.
 - No añadir opiniones de pacientes (delicado en sanidad) ni cifras de «casos de éxito».
 - No meter fotos de caras ni antes/después; personas con la silueta hasta que el cliente suba la suya.
+
+## Páginas propias (fichas)
+Con la misma piel que la portada: cabecera y pie de la plantilla, migas (Inicio › Sección › Elemento), hero con la foto del
+elemento (sin foto, su icono), `detalle` en párrafos, tabla de datos, caja de contacto, galería (`imagenes`) y otros elementos
+de la misma lista.

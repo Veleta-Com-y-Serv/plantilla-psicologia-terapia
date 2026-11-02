@@ -137,6 +137,13 @@
   .arco-cuerpo > .arco-pie { margin-top: auto; }
   .arco-espacio { flex: 1; min-height: 1.5rem; }
   .arco-precio { font-family: var(--fuente-titulos); font-size: 1.6rem; color: var(--c-primario); }
+  .arco { position: relative; }
+  .arco-enlace { color: inherit; text-decoration: none; }
+  .arco-enlace::after { content: ""; position: absolute; inset: 0; border-radius: inherit; }
+  .arco-enlace:focus-visible { outline: none; }
+  .arco:has(.arco-enlace:focus-visible) { outline: 2px solid var(--c-primario); outline-offset: 3px; }
+  .arco:has(.arco-enlace):hover { background: color-mix(in srgb, var(--c-primario) 24%, var(--c-fondo)); }
+  .arco-ver { align-self: center; display: inline-flex; align-items: center; gap: .4rem; margin-top: 1rem; font-size: .76rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--c-primario); }
   .franja-foto { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
   @media (min-width: 768px) { .franja-foto { aspect-ratio: 21 / 8; } }
 

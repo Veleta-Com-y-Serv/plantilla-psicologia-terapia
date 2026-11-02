@@ -73,11 +73,77 @@ secciones:
     texto: "Sesiones con cita previa, presenciales en la consulta o por videollamada. Te damos factura de cada sesión."
     imagen: /fotos/sesion-online.jpg
     terapias:
-      - { titulo: Terapia individual para adultos, texto: "Ansiedad, estrés, autoestima, bloqueos y momentos de cambio. Un espacio para ti.", modalidad: Ambas, duracion: "50 min", precio: "65 €" }
-      - { titulo: Terapia para adolescentes, texto: "De 12 a 17 años, con una sesión de orientación para la familia cada mes.", modalidad: Presencial, duracion: "50 min", precio: "60 €" }
-      - { titulo: Terapia de pareja, texto: "Para recuperar la comunicación, decidir juntos o separarse con el menor daño posible.", modalidad: Ambas, duracion: "75 min", precio: "85 €" }
-      - { titulo: Acompañamiento en el duelo, texto: "Para atravesar una pérdida con apoyo, sin plazos y a tu manera.", modalidad: Ambas, duracion: "50 min", precio: "65 €" }
-      - { titulo: Logopedia infantil, texto: "Retrasos del lenguaje, dificultades de pronunciación y lectoescritura.", modalidad: Presencial, duracion: "45 min", precio: "45 €" }
+      - titulo: Terapia individual para adultos
+        texto: "Ansiedad, estrés, autoestima, bloqueos y momentos de cambio. Un espacio para ti."
+        modalidad: Ambas
+        duracion: "50 min"
+        precio: "65 €"
+        imagen: /fotos/sala-terapia.jpg
+        imagenes: "/fotos/ventana.jpg; /fotos/detalle-mesa.jpg"
+        detalle: |
+          La terapia individual es un espacio reservado para ti, sin prisas y sin juicios. Vienes con lo que te preocupa, ya sea una ansiedad que no te deja descansar, un cansancio que arrastras del trabajo o la sensación de estar atascado, y vamos poniendo palabras a lo que pasa.
+
+          Las primeras sesiones sirven para entender tu historia y concretar qué te gustaría que fuera distinto. A partir de ahí acordamos objetivos y una forma de trabajar que encaje contigo, con tareas sencillas entre sesión y sesión cuando ayudan y sin deberes que te agobien.
+
+          Puedes venir a la consulta o conectarte por videollamada desde casa. En los dos casos la sesión es privada, con el mismo cuidado y la misma duración. Al terminar recibes tu factura y, cuando toca, vamos espaciando los encuentros hasta que te sientas con herramientas para seguir por tu cuenta.
+
+          No hace falta tener un diagnóstico ni saber muy bien qué te pasa para empezar: basta con querer entenderlo.
+      - titulo: Terapia para adolescentes
+        texto: "De 12 a 17 años, con una sesión de orientación para la familia cada mes."
+        modalidad: Presencial
+        duracion: "50 min"
+        precio: "60 €"
+        imagen: /fotos/sala-terapia.jpg
+        detalle: |
+          La adolescencia trae cambios rápidos y muchas veces nadie en casa sabe cómo ayudar. En consulta ofrecemos a chicos y chicas un lugar donde hablar con libertad, a su ritmo y con alguien que no es ni su familia ni su profesor.
+
+          Trabajamos con lo que cada joven trae: la ansiedad ante los exámenes, los conflictos con los amigos, el estado de ánimo, la relación con el móvil o las dificultades para encajar. Las sesiones son cercanas y poco formales, y se apoyan en conversación, pequeños retos y ejercicios que se pueden practicar fuera.
+
+          La familia no queda al margen. Una vez al mes nos reunimos con madres y padres para orientarles sobre cómo acompañar, siempre respetando la confidencialidad de lo que el adolescente nos cuenta. Así la mejora en consulta se nota también en casa.
+
+          Antes de empezar, la primera llamada es con la familia para explicar cómo trabajamos y resolver dudas sobre el proceso.
+      - titulo: Terapia de pareja
+        texto: "Para recuperar la comunicación, decidir juntos o separarse con el menor daño posible."
+        modalidad: Ambas
+        duracion: "75 min"
+        precio: "85 €"
+        imagenes: "/fotos/ventana.jpg; /fotos/sala-grupo.jpg"
+        detalle: |
+          Venir a terapia de pareja no significa que la relación esté rota. Muchas parejas llegan cuando las discusiones se repiten, cuando ya no se escuchan o cuando hay una decisión importante que cuesta tomar, y quieren hacerlo con ayuda.
+
+          En las primeras sesiones conocemos a cada uno y la historia de los dos, y acordamos qué queréis conseguir. Nuestro papel no es dar la razón a nadie ni decidir por vosotros: facilitamos que podáis hablar sin que la conversación termine en lo de siempre y que entendáis qué hay debajo de cada conflicto.
+
+          Trabajamos con ejercicios de comunicación, acuerdos concretos y, si hace falta, sesiones individuales puntuales. Si el camino acaba siendo separarse, también os acompañamos para hacerlo con respeto, sobre todo cuando hay hijos de por medio.
+
+          Las sesiones son algo más largas que las individuales y pueden hacerse en la consulta o por videollamada, según os convenga.
+      - titulo: Acompañamiento en el duelo
+        texto: "Para atravesar una pérdida con apoyo, sin plazos y a tu manera."
+        modalidad: Ambas
+        duracion: "50 min"
+        precio: "65 €"
+        imagen: /fotos/hayedo.jpg
+        detalle: |
+          Perder a alguien, o algo muy importante, deja un vacío que cada persona vive de una manera distinta. No hay una forma correcta de hacerlo ni un tiempo que tengas que cumplir, y aquí nadie te va a pedir que estés mejor antes de lo que puedes.
+
+          En las sesiones hay sitio para hablar de lo que ha pasado, de lo que echas de menos y también de lo que cuesta decir en casa para no preocupar a los demás. Te ayudamos a entender lo que sientes, a poner nombre a la tristeza, al enfado o a la culpa y a encontrar poco a poco maneras de seguir adelante sin dejar atrás a quien se fue.
+
+          El ritmo lo marcas tú. Hay personas que necesitan pocas sesiones y otras que prefieren un acompañamiento más largo y espaciado. Trabajamos con pérdidas de familiares, de amistades, de una relación o de una etapa de la vida.
+
+          Puedes venir a la consulta o hablar por videollamada si salir de casa te cuesta en este momento.
+      - titulo: Logopedia infantil
+        texto: "Retrasos del lenguaje, dificultades de pronunciación y lectoescritura."
+        modalidad: Presencial
+        duracion: "45 min"
+        precio: "45 €"
+        imagenes: "/fotos/detalle-mesa.jpg"
+        detalle: |
+          La logopedia infantil ayuda a niños y niñas que tienen dificultades para hablar, pronunciar ciertos sonidos, construir frases o aprender a leer y escribir. Cuanto antes se detecta, más fácil resulta acompañarles, pero siempre se puede empezar.
+
+          La primera sesión es una valoración tranquila en la que jugamos con el niño y observamos cómo se comunica, mientras hablamos con la familia sobre lo que ha notado en casa y en el colegio. Con esa información proponemos un plan de trabajo claro y explicado sin tecnicismos.
+
+          Las sesiones son activas y con mucho juego: cuentos, tarjetas, canciones y ejercicios para la boca y la respiración que los niños viven como un rato divertido. Entregamos a la familia pequeñas tareas para practicar en casa, porque la constancia entre sesiones es lo que más cambia las cosas.
+
+          Mantenemos el contacto con el centro escolar, si la familia lo desea, para que todos trabajemos en la misma dirección.
       - { titulo: Grupo de mindfulness, texto: "Ocho sesiones semanales en grupos de diez personas como máximo.", modalidad: Online, duracion: "8 sesiones de 90 min", precio: "180 €" }
     cta: { texto: Pedir primera cita, url: "/#cita" }
 
